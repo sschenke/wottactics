@@ -452,17 +452,7 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 
 	router.get('/', function(req, res, next) {
 		var game;
-		if (req.hostname) {
-			if (req.hostname.indexOf('awtactic') != -1) {
-				game = "aw";
-			} else if (req.hostname.indexOf('wowstactic') != -1) {
-				game = "wows";
-			} else {
-				game = "wot";
-			}
-		} else {
-			game = "wot";
-		}
+		game = "wows"; // sascha, static
 		set_game(req, res, game);
 		res.render('index', { game: req.session.game, 
 							user: req.session.passport.user,
