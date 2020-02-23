@@ -2,6 +2,7 @@ var fs = require('fs');
 var _datadir = null;
 var secrets = JSON.parse(fs.readFileSync('secrets.json', 'utf8'));
 var http = require('http');
+var https = require('https');
 var escaper = require('mongo-key-escape');
 var sizeof = require('object-sizeof');
 var request = require('request');
@@ -1655,16 +1656,19 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 	});
 	
 	//create server
-	var server = http.createServer(app);	
+	var server = http.createServer(app);
+	var sslServer = https.createServer(app);
 	io.attach(server);
   
   var port = secrets.port;
+  var sslPort = secrets.sslPort;
   if (process.env.PORT) {
     port = process.env.PORT
   }
   
   console.log("starting server on port:", port);
 	server.listen(port);	
+	sslServer.listen(sslPort);
 	
 });
 
