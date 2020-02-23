@@ -13,6 +13,8 @@
 				<li id="home">
 				<a href="<%=home%>">
 				<h1>
+					WOWS Tactics
+					<!--
 					<% if (game == 'wot') { %>
 						WOT Tactics
 					<% } else if (game == 'wows') { %>
@@ -54,6 +56,7 @@
 					<% } else if (game == 'foxhole') { %>
 						Foxhole Tactics
 					<% } %>
+					-->
 				</h1>
 				</a>
 				<li>		
@@ -72,11 +75,11 @@
 			<li id="forum"><a href="https://forum.<%=url.split('/')[0]%>/forums/"><h2><%=l('Forums')%></h2></a></li>
 		</ul>
 
+		<!--
 		<%if (!user.no_ads) {%>
 			<div class="hidden-xs" style="background-color:white; width:728px; height:90px; margin-left:50px; margin-right:50px; margin-top:10px; margin-bottom:10px; float:left">
 			<%if (game == 'wot' || game == 'wows' || game == 'blitz' || Math.random() <= 1) {%>
 				<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-				<!-- main navbar -->
 				<ins class="adsbygoogle hidden-xs"
 					 style="display:inline-block;width:728px;height:90px"
 					 data-ad-client="<%=secrets.adsense_id%>"
@@ -118,7 +121,7 @@
 				<a href="https://wgpartner.com/?a=777&c=+<%=ad.code%>+&s1="><img src="<%=static_host%><%=path%><%=ad.link%>" alt="wot_ad"></a>	
 			<% } %>
 			</div>
-		<%}%>
+		<%}%>-->
 				
 		<ul class="nav navbar-nav navbar-right">
 			<li class="dropdown">

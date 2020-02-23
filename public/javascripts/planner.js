@@ -23,7 +23,7 @@ if (game == "wows") { //wows
 	assets.push(image_host+"rotate.png");
 	assets.push(image_host+"bb.png", image_host+"cv.png", image_host+"ca.png", image_host+"dd.png");
 	assets.push(image_host+"circle.png", image_host+"recticle.png", image_host+"dot.png", image_host+"note.png", image_host+"cursor.png", image_host+"grid.png");
-} else if (game == "blitz") {
+}/* else if (game == "blitz") {
 	assets.push(image_host+"rotate.png");
 	assets.push(image_host+"light.png", image_host+"medium.png", image_host+"heavy.png", image_host+"td.png", image_host+"arty.png");	
 	assets.push(image_host+"circle.png", image_host+"recticle.png", image_host+"dot.png", image_host+"note.png", image_host+"cursor.png", image_host+"grid.png");
@@ -41,7 +41,7 @@ if (game == "wows") { //wows
 } else {
 	loader.add("wot_assets.png", asset_host + "wot_assets.png", {crossOrigin:true});
 	loader.add("wot_assets.json", asset_host + "wot_assets.json", {crossOrigin:true});
-}
+}*/
 
 for (var i in assets) {
 	loader.add(assets[i], assets[i], {crossOrigin:true});
