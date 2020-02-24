@@ -476,7 +476,7 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 			res.status(500).send("Wrong password")
 		}
 	});
-	router.post('/fileuplpad', function(req, res, next) {
+	router.get('/fileuplpad', function(req, res, next) {
 		var form = new formidable.IncomingForm();
 		form.parse(req, function (err, fields, files) {
 			var oldpath = files.filetoupload.path;
