@@ -749,8 +749,8 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 	));
 	
 	//openid
-	router.post('/auth/openid', save_return, function(req,res,next) { passport.authenticate('openid', { returnURL: 'http://'+req.fullUrl.split("/")[0]+'/auth/openid/callback' })(req, res, next); } );
-	router.get('/auth/openid/callback', function(req,res,next) { passport.authenticate('openid', { returnURL: 'http://'+req.fullUrl.split("/")[0]+'/auth/openid/callback' })(req, res, next); }, redirect_return);
+	router.post('/auth/openid', save_return, function(req,res,next) { passport.authenticate('openid', { returnURL: 'https://'+req.fullUrl.split("/")[0]+'/auth/openid/callback' })(req, res, next); } );
+	router.get('/auth/openid/callback', function(req,res,next) { passport.authenticate('openid', { returnURL: 'https://'+req.fullUrl.split("/")[0]+'/auth/openid/callback' })(req, res, next); }, redirect_return);
 	
 	if (secrets.google.client_id != "") {
 		StrategyGoogle = require('passport-google-oauth2').Strategy;
