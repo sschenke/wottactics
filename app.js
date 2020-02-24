@@ -6,6 +6,7 @@ var https = require('https');
 var escaper = require('mongo-key-escape');
 var sizeof = require('object-sizeof');
 var request = require('request');
+var formidable = require('formidable');
 
 var redis = require('redis');
 var redis_client = redis.createClient(secrets.redis_options);
@@ -475,6 +476,18 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 			res.status(500).send("Wrong password")
 		}
 	});
+	router.get('/fileuplpad', function(req, res, next) {
+		var form = new formidable.IncomingForm();
+		form.parse(req, function (err, fields, files) {
+			var oldpath = files.filetoupload.path;
+			var newpath = 'upload/' + files.filetoupload.name;
+			fs.rename(oldpath, newpath, function (err) {
+			  if (err) throw err;
+			  res.write('File uploaded and moved!');
+			  res.end();
+			});
+		});
+	})
 	
 	function planner_redirect(req, res, game, template) {
 	  if (req.query.restore) {
