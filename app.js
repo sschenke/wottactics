@@ -757,7 +757,7 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 		passport.use('google', new StrategyGoogle({
 			clientID: secrets.google.client_id,
 			clientSecret: secrets.google.secret,
-			callbackURL: 'http://omtactics.spdns.eu:8080//auth/google/callback',
+			callbackURL: '/auth/google/callback',
 			scope: 'https://www.googleapis.com/auth/userinfo.profile',
 			passReqToCallback:true,
 			stateless: true
@@ -781,8 +781,8 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 		));
 		
 		//google
-		router.post('/auth/google', save_return, function(req,res,next) { passport.authenticate('google', { callbackURL: 'http://'+req.fullUrl.split("/")[0]+'/auth/google/callback' })(req, res, next); } );
-		router.get('/auth/google/callback', function(req,res,next) { passport.authenticate('google', { callbackURL: 'http://'+req.fullUrl.split("/")[0]+'/auth/google/callback' })(req, res, next); }, redirect_return);
+		router.post('/auth/google', save_return, function(req,res,next) { passport.authenticate('google', { callbackURL: 'https://'+req.fullUrl.split("/")[0]+'/auth/google/callback' })(req, res, next); } );
+		router.get('/auth/google/callback', function(req,res,next) { passport.authenticate('google', { callbackURL: 'https://'+req.fullUrl.split("/")[0]+'/auth/google/callback' })(req, res, next); }, redirect_return);
 	}
 	
 	if (secrets.vk.client_id != "") {
