@@ -1657,18 +1657,15 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 	
 	//create server
 	var server = http.createServer(app);
-	var sslServer = https.createServer(app);
 	io.attach(server);
   
   var port = secrets.port;
-  var sslPort = secrets.sslPort;
   if (process.env.PORT) {
     port = process.env.PORT
   }
   
   console.log("starting server on port:", port);
 	server.listen(port);	
-	sslServer.listen(sslPort);
 	
 });
 
