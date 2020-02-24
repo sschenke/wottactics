@@ -1262,15 +1262,15 @@
 	  </div>
 	</div>
 	
-	<!-- form id="upload_map_form" method="POST" action="<%=secrets.upload_path%>/upload.php" enctype="multipart/form-data" hidden>
+	<form id="upload_map_form" method="POST" action="<%=secrets.upload_path%>/upload.php" enctype="multipart/form-data" hidden>
 		<input name="MAX_FILE_SIZE" type="hidden"  value="10000000"/>
 		<input name="pictures" id="upload_background_browse" type="file" />
 		<input type="submit" value="upload"/>
-	</form -->
-	<form id="upload_map_form" action="fileupload" method="post" enctype="multipart/form-data">
+	</form>
+	<!-- form id="upload_map_form" action="fileupload" method="post" enctype="multipart/form-data">
 		<input type="file" name="filetoupload"><br>
 		<input type="submit">
-	</form>
+	</form -->
 	
 	<form name="file_submit" id="upload_icon_form" method="POST" action="<%=secrets.upload_path%>/upload_icon.php" enctype="multipart/form-data" hidden>
 		<input type="hidden" name="MAX_FILE_SIZE" value="10000000"/>
