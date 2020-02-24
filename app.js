@@ -754,11 +754,11 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 	
 	if (secrets.google.client_id != "") {
 		StrategyGoogle = require('passport-google-oauth2').Strategy;
-		passport.use('google', new StrategyGoogle({
+		passport.use(new StrategyGoogle({
 			clientID: secrets.google.client_id,
 			clientSecret: secrets.google.secret,
 			callbackURL: '/auth/google/callback',
-			scope: 'profile',
+			scope: ['profile'],
 			passReqToCallback:true,
 			stateless: true
 		  },
