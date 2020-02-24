@@ -755,7 +755,7 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 	if (secrets.google.client_id != "") {
 		StrategyGoogle = require('passport-google-oauth2').Strategy;
 		// hack
-		GoogleStrategy.prototype.userProfile = function(token, done) {
+		StrategyGoogle.prototype.userProfile = function(token, done) {
 			done(null, {})
 		  }
 		passport.use('google', new StrategyGoogle({
