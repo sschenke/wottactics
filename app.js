@@ -758,7 +758,7 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 			clientID: secrets.google.client_id,
 			clientSecret: secrets.google.secret,
 			callbackURL: '/auth/google/callback',
-			scope: 'https://www.googleapis.com/auth/userinfo.profile',
+			scope: 'https://www.googleapis.com/oauth2/v1/userinfo',
 			passReqToCallback:true,
 			stateless: true
 		  },
