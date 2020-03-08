@@ -307,8 +307,7 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 		} else {
 			host = host[0];
 		}
-		//return host;
-		return 'omtactics.spdns.eu';	
+		return host;
 	}
 	
 	// initializing session middleware
@@ -764,19 +763,11 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 	
 	//openid
 	router.post('/auth/openid', save_return, function(req, res, next) {
-		/*console.log('POST');
-		console.log(req);
-		console.log(res);
-		console.log(next);*/
 		passport.authenticate('openid', {
 			returnURL: 'https://' + req.fullUrl.split("/")[0] + '/auth/openid/callback'
 		})(req, res, next);
 	});
 	router.get('/auth/openid/callback', function(req, res, next) {
-		/*console.log('GET');
-		console.log(req);
-		console.log(res);
-		console.log(next);*/
 		passport.authenticate('openid', {
 			returnURL: 'https://' + req.fullUrl.split("/")[0] + '/auth/openid/callback'
 		})(req, res, next);
@@ -1088,11 +1079,11 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 	}
 	function redirect_return(req, res, next) {
 		if (req.session.passport.user.identity) {
-			res.cookie('logged_in', req.session.passport.user.identity, {maxAge: 30 * 3600 * 1000, domain: get_host(req)});
-			console.log('logged_in cookie set');
-			console.log('logged_in', req.session.passport.user.identity, {maxAge: 30 * 3600 * 1000, domain: get_host(req)});
+			//res.cookie('logged_in', req.session.passport.user.identity, {maxAge: 30 * 3600 * 1000, domain: get_host(req)});
+			res.cookie('logged_in', req.session.passport.user.identity, {maxAge: 30 * 3600 * 1000, domain: 'omtactics.spdns.eu'});
 		} else {
-			res.cookie('logged_in', "no", {maxAge: 30 * 3600 * 1000, domain: get_host(req)}); 
+			//res.cookie('logged_in', "no", {maxAge: 30 * 3600 * 1000, domain: get_host(req)});
+			res.cookie('logged_in', "no", {maxAge: 30 * 3600 * 1000, domain: 'omtactics.spdns.eu'}); 
 		}
 		if (!req.session.return_to || req.session.return_to.match("^undefined")) {
 			console.error("Invalid return path:", req.session.return_to);
