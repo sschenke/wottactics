@@ -16951,7 +16951,7 @@ var MIN_POLYGON_END_DISTANCE = .01,
     background, draw_thickness, curve_thickness, line_thickness, icon_size, ping_size, track_size, draw_end_size, line_end_size, curve_end_size, rectangle_outline_thickness, rectangle_outline_transparancy, rectangle_fill_transparancy, circle_outline_thickness, circle_outline_transparancy, circle_fill_transparancy, polygon_outline_thickness, polygon_outline_transparancy, polygon_fill_transparancy,
     area_outline_thickness, area_outline_transparancy, area_fill_transparancy, my_user, undo_list = [],
     redo_list = [],
-    is_room_locked, tactic_name = "",
+    is_room_locked = false, tactic_name = "",
     graphics, new_drawing, left_click_origin, selected_entities = [],
     previously_selected_entities = [],
     label_font_size = 30,
@@ -19473,7 +19473,7 @@ function update_my_user() {
 }
 
 function update_lock() {
-    /*var k = $("#lock div");
+    var k = $("#lock div");
     is_room_locked ? k.removeClass("icon-unlock").addClass("icon-lock") : k.removeClass("icon-lock").addClass("icon-unlock");
     if (is_room_locked && !my_user.role) {
         $(".mejs-controls").hide();
@@ -19492,7 +19492,7 @@ function update_lock() {
     "owner" != my_user.role && is_room_locked ? ($("#store_tactic_popover").hide(), $("#save").hide(), $("#export_tab_button").hide()) : (my_user.logged_in ? ($("#store_tactic_popover").show(), tactic_name && "" != tactic_name && $("#save").show()) :
         ($("#store_tactic_popover").hide(), $("#save").hide()), $("#export_tab_button").show());
     "owner" == my_user.role ? ($("#lock").show(), $("#nuke_room").show(), $("#stop_present").prop("disabled", !1), $("#lock_camera").show()) : ($("#lock").hide(), $("#nuke_room").hide(), $("#lock_camera").hide(), $("#stop_present").prop("disabled", !0));
-    update_slide_buttons()*/
+    update_slide_buttons()
 }
 
 function remove_user(k) {
@@ -20742,7 +20742,8 @@ $(document).ready(function() {
             $(this).find("a:first").trigger("click")
         });
         $("#lock").click(function() {
-            is_room_locked = $(this).find("div").hasClass("icon-lock") ? !1 : !0;
+            //is_room_locked = $(this).find("div").hasClass("icon-lock") ? !1 : !0;
+            is_room_locked = false;
             update_lock();
             socket.emit("lock_room", room, is_room_locked)
         });
@@ -21083,7 +21084,8 @@ $(document).ready(function() {
         video_paused = a.video_paused;
         active_slide = room_data.active_slide;
         room_data.slides[active_slide] || (active_slide = Object.keys(room_data.slides)[0]);
-        is_room_locked = room_data.locked;
+        //is_room_locked = room_data.locked;
+        is_room_locked = false;
         room_data.hasOwnProperty("presentation_mode") && set_presentation_mode(room_data.presentation_mode);
         my_user_id = c;
         (tactic_name = d) && "" != tactic_name && (document.title = "Tactic - " + tactic_name);
@@ -21156,7 +21158,8 @@ $(document).ready(function() {
         remove_user(a)
     });
     socket.on("lock_room", function(a, c) {
-        is_room_locked = a;
+        //is_room_locked = a;
+        is_room_locked = false;
         update_lock();
         activity_animation(c)
     });
