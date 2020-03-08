@@ -763,6 +763,7 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 	
 	//openid
 	router.post('/auth/openid', save_return, function(req, res, next) {
+		console.log('POST');
 		console.log(req);
 		console.log(res);
 		console.log(next);
@@ -771,6 +772,7 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 		})(req, res, next);
 	});
 	router.get('/auth/openid/callback', function(req, res, next) {
+		console.log('GET');
 		console.log(req);
 		console.log(res);
 		console.log(next);
