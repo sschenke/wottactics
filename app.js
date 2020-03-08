@@ -307,7 +307,8 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 		} else {
 			host = host[0];
 		}
-		return host;		
+		//return host;
+		return 'omtactics.spdns.eu';	
 	}
 	
 	// initializing session middleware
