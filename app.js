@@ -763,19 +763,19 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 	
 	//openid
 	router.post('/auth/openid', save_return, function(req, res, next) {
-		console.log('POST');
+		/*console.log('POST');
 		console.log(req);
 		console.log(res);
-		console.log(next);
+		console.log(next);*/
 		passport.authenticate('openid', {
 			returnURL: 'https://' + req.fullUrl.split("/")[0] + '/auth/openid/callback'
 		})(req, res, next);
 	});
 	router.get('/auth/openid/callback', function(req, res, next) {
-		console.log('GET');
+		/*console.log('GET');
 		console.log(req);
 		console.log(res);
-		console.log(next);
+		console.log(next);*/
 		passport.authenticate('openid', {
 			returnURL: 'https://' + req.fullUrl.split("/")[0] + '/auth/openid/callback'
 		})(req, res, next);
