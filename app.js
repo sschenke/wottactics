@@ -1082,10 +1082,15 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 		});
 	});	
 	function save_return(req, res, next) {
+		console.error('save_return');
+		console.error(req.headers.referer);
 		req.session.return_to = req.headers.referer;
+		console.error(req.session);
 		next();
 	}
 	function redirect_return(req, res, next) {
+		console.error('redirect_return');
+		console.log(req.session);
 		if (req.session.passport.user.identity) {
 			res.cookie('logged_in', req.session.passport.user.identity, {maxAge: 30 * 3600 * 1000, domain: get_host(req)}); 
 		} else {
