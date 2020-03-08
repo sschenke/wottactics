@@ -4328,7 +4328,9 @@ function add_user(user) {
 
 //function should be called when anything about you as a user changes, it will update the interface
 //accordingly
-function update_my_user() {	
+function update_my_user() {
+	console.log('+++ update_my_user');	
+	console.log(my_user);
 	if (my_user.logged_in) { //logged in
 		$("#store_tactic_popover").show();
 		if (tactic_name && tactic_name != "") {
@@ -7070,11 +7072,16 @@ $(document).ready(function() {
 	});
 
 	socket.on('identify', function(user) {
+		console.log('socket identify');
 		if (!my_user) {
+			console.log('if');
+			console.log(user);
 			my_user = user;
 		} else {
+			console.error('else');
 			my_user.logged_in = user.logged_in;
 			my_user.name = user.name;
+			console.error(my_user);
 		}
 		update_my_user();
 	});
