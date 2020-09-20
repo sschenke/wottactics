@@ -1080,10 +1080,10 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 	function redirect_return(req, res, next) {
 		if (req.session.passport.user.identity) {
 			//res.cookie('logged_in', req.session.passport.user.identity, {maxAge: 30 * 3600 * 1000, domain: get_host(req)});
-			res.cookie('logged_in', req.session.passport.user.identity, {maxAge: 30 * 3600 * 1000, domain: 'omtactics.spdns.eu'});
+			res.cookie('logged_in', req.session.passport.user.identity, {maxAge: 30 * 3600 * 1000, domain: 'omtactixx.spdns.org'});
 		} else {
 			//res.cookie('logged_in', "no", {maxAge: 30 * 3600 * 1000, domain: get_host(req)});
-			res.cookie('logged_in', "no", {maxAge: 30 * 3600 * 1000, domain: 'omtactics.spdns.eu'}); 
+			res.cookie('logged_in', "no", {maxAge: 30 * 3600 * 1000, domain: 'omtactixx.spdns.org'}); 
 		}
 		if (!req.session.return_to || req.session.return_to.match("^undefined")) {
 			console.error("Invalid return path:", req.session.return_to);
