@@ -1037,12 +1037,12 @@ MongoClient.connect(connection_string, {reconnectTries:99999999}, function(err, 
 			if (!room_data[target]) {
 				res.send("Error: room is not active or does not exist.");
 				return;
-			} else if (room_data[target].locked
+			} /* else if (room_data[target].locked
 					  && (!room_data[target].userlist[user.id] || !room_data[target].userlist[user.id].role) 
 					  && (!room_data[target].lost_identities[user.identity] || !room_data[target].lost_identities[user.identity].role)) {
 				res.send("Error: You don't have permission for that room.");
 				return;
-			}
+			}*/
 			
 			var source = req.body.source;
 			if (req.body.stored == "true") {
